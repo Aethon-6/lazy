@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: lazy-auth
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 101.43.56.35:8848
+        namespace: 57b6121a-dcef-4056-952f-ecc7ff53325a
+        group: LAZY_GROUP
+        watch:
+          enabled: true
+        watch-delay: 1000
+      config:
+        server-addr: 101.43.56.35:8848
+        namespace: 57b6121a-dcef-4056-952f-ecc7ff53325a
+        group: LAZY_GROUP
+        file-extension: yaml
+        prefix: ${spring.application.name}
