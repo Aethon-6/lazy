@@ -6,15 +6,15 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 101.43.56.35:8848
-        namespace: 57b6121a-dcef-4056-952f-ecc7ff53325a
+        server-addr: 47.117.143.201:8848
+        namespace: 64cec349-3aba-458e-a030-671d89159b3d
         group: LAZY_GROUP
         watch:
           enabled: true
         watch-delay: 1000
       config:
-        server-addr: 101.43.56.35:8848
-        namespace: 57b6121a-dcef-4056-952f-ecc7ff53325a
+        server-addr: 47.117.143.201:8848
+        namespace: 64cec349-3aba-458e-a030-671d89159b3d
         group: LAZY_GROUP
         file-extension: yaml
         prefix: ${spring.application.name}
