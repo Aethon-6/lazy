@@ -7,10 +7,7 @@ import com.lazy.common.core.utils.R;
 import com.lazy.system.dto.UserInfo;
 import com.lazy.system.user.service.IUserService;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,5 +40,11 @@ public class UserController {
         map.put("username", userInfo.getUser().getUserName());
         map.put("roles", userInfo.getRoles());
         return R.success().data(map);
+    }
+
+    @GetMapping("info/{userId}")
+    public R getUserInfoById(@PathVariable(value = "userId") Long userId) {
+        UserInfo userInfo = userService.info(userId);
+        return R.success().data("userinfo", userInfo);
     }
 }
