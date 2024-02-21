@@ -8,6 +8,7 @@
         <result column="role_name" property="roleName" />
         <result column="role_code" property="roleCode" />
         <result column="role_desc" property="roleDesc" />
+        <result column="parent_id" property="parentId" />
         <result column="create_time" property="createTime" />
         <result column="create_by" property="createBy" />
         <result column="update_time" property="updateTime" />

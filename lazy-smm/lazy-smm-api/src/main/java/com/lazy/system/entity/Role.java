@@ -50,6 +50,12 @@ public class Role implements Serializable {
     private String roleDesc;
 
     /**
+     * 父角色ID
+     */
+    @TableField("parent_id")
+    private Long parentId;
+
+    /**
      * 创建时间
      */
     @TableField("create_time")
