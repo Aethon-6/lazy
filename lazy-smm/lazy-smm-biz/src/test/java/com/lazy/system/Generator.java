@@ -17,13 +17,13 @@ public class Generator {
 
     @Test
     public void generator() {
-        List<String> tableNames = Arrays.asList("lazy_user", "lazy_account");
+        List<String> tableNames = Arrays.asList("lazy_menu");
         // 数据库连接地址，
         String url = "jdbc:mysql://47.117.143.201:3306/lazy?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC";
         // 数据库用户名
         String name = "root";
         // 数据库密码
-        String password = "Q1w2e3r4!";
+        String password = "111111";
         FastAutoGenerator.create(url, name, password)
                 .globalConfig(builder -> {
                     builder.author("ywx")               //作者
@@ -36,7 +36,7 @@ public class Generator {
                 })
                 .packageConfig(builder -> {
                     builder.parent("com.lazy.system")
-                            .moduleName("user")
+                            .moduleName("menu")
                             .entity("entity")
                             .service("service")
                             .serviceImpl("service.impl")
