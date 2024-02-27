@@ -19,9 +19,9 @@ public class Generator {
     public void generator() {
         List<String> tableNames = Arrays.asList("lazy_role");
         // 数据库连接地址，
-        String url = "jdbc:mysql://47.117.143.201:3306/lazy?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC";
+        String url = "jdbc:mysql://1.94.66.77:3306/lazy?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC";
         // 数据库用户名
-        String name = "root";
+        String name = "sadmin";
         // 数据库密码
         String password = "111111";
         FastAutoGenerator.create(url, name, password)
