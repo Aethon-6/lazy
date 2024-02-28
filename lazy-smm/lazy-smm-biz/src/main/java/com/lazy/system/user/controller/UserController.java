@@ -25,22 +25,7 @@ import java.util.Map;
 public class UserController {
     @Resource
     private IUserService userService;
-
-    @GetMapping("info/by/name")
-    public R getUserInfoByUserName(@RequestParam String username) {
-        return userService.getUserInfoByUserName(username);
-    }
     // docker run --name mysql -v /srv/docker/mysql/log:/var/log/mysql -v /srv/docker/mysql/data:/var/lib/mysql -v /srv/docker/mysql/conf:/etc/mysql/conf.d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=111111 -itd mysql
-
-    @GetMapping("info")
-    public R getUserInfo() {
-        Long loginId = NumberUtil.binaryToLong(StpUtil.getLoginId().toString());
-        UserInfo userInfo = userService.info(loginId);
-        Map<String, Object> map = new HashMap<>();
-        map.put("username", userInfo.getUser().getUserName());
-        map.put("roles", userInfo.getRoles());
-        return R.success().data(map);
-    }
 
     @GetMapping("info/{userId}")
     public R getUserInfoById(@PathVariable(value = "userId") Long userId) {

@@ -32,3 +32,4 @@ replay_pid*
 /lazy-smm/lazy-smm-biz/target/
 /logs/
 /.idea/
+/lazy-smm/lazy-smm-biz/logs/

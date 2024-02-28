@@ -29,11 +29,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     private RemoteAccountService remoteAccountService;
 
     @Override
-    public R getUserInfoByUserName(String username) {
-        return remoteAccountService.info(username);
-    }
-
-    @Override
     public UserInfo info(Long loginId) {
         User user = getById(loginId);
         Account account = JSONUtil.toBean(JSONUtil.toJsonStr(remoteAccountService.queryInfoByUserId(loginId).getData().get("accountInfo")), Account.class);

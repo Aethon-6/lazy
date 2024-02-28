@@ -5,14 +5,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * 角色表 前端控制器
+ * 角色权限表 前端控制器
  * </p>
  *
  * @author ywx
  * @since 2024-02-28
  */
 @RestController
-@RequestMapping("/role/role")
-public class RoleController {
+@RequestMapping("/role/rolePermission")
+public class RolePermissionController {
 
 }

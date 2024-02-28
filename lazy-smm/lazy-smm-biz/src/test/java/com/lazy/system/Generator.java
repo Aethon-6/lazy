@@ -17,7 +17,7 @@ public class Generator {
 
     @Test
     public void generator() {
-        List<String> tableNames = Arrays.asList("lazy_role");
+        List<String> tableNames = Arrays.asList("lazy_role", "lazy_role_permission", "lazy_user_role");
         // 数据库连接地址，
         String url = "jdbc:mysql://1.94.66.77:3306/lazy?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC";
         // 数据库用户名
@@ -30,7 +30,7 @@ public class Generator {
                             .outputDir(System.getProperty("user.dir") + "/src/main/java")    //输出路径(写到java目录)
                             //.enableSwagger()           //开启swagger
                             .commentDate("yyyy-MM-dd")
-                            //.fileOverride()//开启覆盖之前生成的文件
+                    //.fileOverride()//开启覆盖之前生成的文件
                     ;
 
                 })

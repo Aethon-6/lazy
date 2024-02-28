@@ -1,16 +1,16 @@
 package com.lazy.system.role.service;
 
-import com.lazy.system.entity.Role;
+import com.lazy.system.entity.UserRole;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>
- * 角色表 服务类
+ * 用户角色表 服务类
  * </p>
  *
  * @author ywx
  * @since 2024-02-28
  */
-public interface IRoleService extends IService<Role> {
+public interface IUserRoleService extends IService<UserRole> {
 
 }

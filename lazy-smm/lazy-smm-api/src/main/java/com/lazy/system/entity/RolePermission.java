@@ -12,7 +12,7 @@ import lombok.Setter;
 
 /**
  * <p>
- * 角色表
+ * 角色权限表
  * </p>
  *
  * @author ywx
@@ -20,8 +20,8 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-@TableName("lazy_role")
-public class Role implements Serializable {
+@TableName("lazy_role_permission")
+public class RolePermission implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,28 +32,16 @@ public class Role implements Serializable {
     private Long id;
 
     /**
-     * 角色名
+     * 角色ID
      */
-    @TableField("role_name")
-    private String roleName;
+    @TableField("role_id")
+    private Long roleId;
 
     /**
-     * 角色编码
+     * 权限ID
      */
-    @TableField("role_code")
-    private String roleCode;
-
-    /**
-     * 角色描述
-     */
-    @TableField("role_desc")
-    private String roleDesc;
-
-    /**
-     * 父角色ID
-     */
-    @TableField("parent_id")
-    private Long parentId;
+    @TableField("permission_id")
+    private Long permissionId;
 
     /**
      * 创建时间
