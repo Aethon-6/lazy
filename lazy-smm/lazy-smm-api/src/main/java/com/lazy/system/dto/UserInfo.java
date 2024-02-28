@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @Builder
@@ -26,10 +27,10 @@ public class UserInfo implements Serializable {
     /**
      * 权限标识集合
      */
-    private String[] permissions;
+    private List<String> permissions;
 
     /**
      * 角色集合
      */
-    private Long[] roles;
+    private List<String> roles;
 }

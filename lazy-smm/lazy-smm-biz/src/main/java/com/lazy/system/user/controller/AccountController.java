@@ -1,7 +1,6 @@
 package com.lazy.system.user.controller;
 
 import com.lazy.common.core.utils.R;
-import com.lazy.system.entity.Account;
 import com.lazy.system.user.service.IAccountService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
