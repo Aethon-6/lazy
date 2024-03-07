@@ -28,7 +28,7 @@ public class UserController {
     // docker run --name mysql -v /srv/docker/mysql/log:/var/log/mysql -v /srv/docker/mysql/data:/var/lib/mysql -v /srv/docker/mysql/conf:/etc/mysql/conf.d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=111111 -itd mysql
 
     @GetMapping("info/{userId}")
-    public R getUserInfoById(@PathVariable(value = "userId") Long userId) {
+    public R queryInfoById(@PathVariable(value = "userId") Long userId) {
         UserInfo userInfo = userService.info(userId);
         return R.success().data("userinfo", userInfo);
     }

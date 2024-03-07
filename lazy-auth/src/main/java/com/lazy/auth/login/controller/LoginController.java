@@ -39,10 +39,10 @@ public class LoginController {
         if (!StrUtil.equals("1", param.get("code").toString())) {
             log.info("验证码不正确！！！");
         }
-        Account accountInfo = JSONUtil.toBean(JSONUtil.toJsonStr(remoteAccountService.info(param.get("username").toString()).getData().get("accountInfo")), Account.class);
+        Account accountInfo = JSONUtil.toBean(JSONUtil.toJsonStr(remoteAccountService.queryInfo(param.get("username").toString()).getData().get("accountInfo")), Account.class);
         if (StrUtil.equals(param.get("password").toString(), accountInfo.getPassword())) {
             StpUtil.login(accountInfo.getUserId());
-            UserInfo userinfo = JSONUtil.toBean(JSONUtil.toJsonStr(remoteUserService.getUserInfoById(accountInfo.getUserId()).getData().get("userinfo")), UserInfo.class);
+            UserInfo userinfo = JSONUtil.toBean(JSONUtil.toJsonStr(remoteUserService.queryInfoById(accountInfo.getUserId()).getData().get("userinfo")), UserInfo.class);
             StpUtil.getSession().set("userinfo", userinfo);
             return R.success().data("token", StpUtil.getTokenValue());
         }

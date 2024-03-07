@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(contextId = "remoteAccountService", value = "lazy-smm-biz")
 public interface RemoteAccountService {
     @GetMapping("/sys/account/info/query")
-    R info(@RequestParam(value = "username") String username);
+    R queryInfo(@RequestParam(value = "username") String username);
 
-    @GetMapping("/sys/account/info/{userId}")
+    @GetMapping("/sys/account/info/query/{userId}")
     R queryInfoByUserId(@PathVariable(value = "userId") Long userId);
 }

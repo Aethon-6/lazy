@@ -15,12 +15,12 @@
         <result column="del_flag" property="delFlag" />
     </resultMap>
     
-    <select id="getPermissionByUserId" parameterType="long" resultMap="BaseResultMap">
+    <select id="queryPermissionsByUserId" parameterType="long" resultMap="BaseResultMap">
         select p.*
         from lazy_permission p
                  inner join lazy_role_permission rp on rp.permission_id = p.id
                  inner join lazy_user_role ur on ur.role_id = rp.role_id
-        where ur.user_id = ${userId};
+        where ur.user_id = ${userId}
     </select>
 
 </mapper>

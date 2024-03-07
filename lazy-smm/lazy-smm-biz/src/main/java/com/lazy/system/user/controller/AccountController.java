@@ -21,11 +21,11 @@ public class AccountController {
     private IAccountService accountService;
 
     @GetMapping("info/query")
-    public R info(@RequestParam String username) {
+    public R queryInfo(@RequestParam String username) {
         return R.success().data("accountInfo", accountService.queryInfo(username));
     }
 
-    @GetMapping("info/{userId}")
+    @GetMapping("info/query/{userId}")
     R queryInfoByUserId(@PathVariable(value = "userId") Long userId) {
         return R.success().data("accountInfo", accountService.queryInfoByUserId(userId));
     }

@@ -14,5 +14,5 @@ import java.util.List;
  * @since 2024-02-21
  */
 public interface IPermissionService extends IService<Permission> {
-    List<Permission> getPermissionByUserId(Long userId);
+    List<Permission> queryPermissionsByUserId(Long userId);
 }

@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(contextId = "remoteUserService", value = "lazy-smm-biz")
 public interface RemoteUserService {
     @GetMapping("/sys/user/info/{userId}")
-    R getUserInfoById(@PathVariable(value = "userId") Long userId);
+    R queryInfoById(@PathVariable(value = "userId") Long userId);
 }

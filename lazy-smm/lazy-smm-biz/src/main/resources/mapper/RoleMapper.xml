@@ -15,5 +15,11 @@
         <result column="update_by" property="updateBy" />
         <result column="del_flag" property="delFlag" />
     </resultMap>
-
+    
+    <select id="queryRolesByUserId" parameterType="long" resultMap="BaseResultMap">
+        select r.*
+        from lazy_role r
+                 inner join lazy_user_role ur on ur.role_id = r.id and ur.del_flag = '0'
+        where ur.user_id = ${userId}
+    </select>
 </mapper>
