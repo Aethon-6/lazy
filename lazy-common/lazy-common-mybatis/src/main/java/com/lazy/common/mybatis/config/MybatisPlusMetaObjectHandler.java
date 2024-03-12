@@ -3,6 +3,8 @@ package com.lazy.common.mybatis.config;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.lazy.common.core.constant.CommonConstants;
+import com.lazy.common.core.utils.UserUtil;
+import com.lazy.system.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.util.ClassUtils;
@@ -19,11 +21,12 @@ public class MybatisPlusMetaObjectHandler implements MetaObjectHandler {
     public void insertFill(MetaObject metaObject) {
         log.debug("mybatis plus start insert fill ....");
         LocalDateTime now = LocalDateTime.now();
+        User userInfo = UserUtil.getUserInfo();
 
         fillValIfNullByName("createTime", now, metaObject, true);
         fillValIfNullByName("updateTime", now, metaObject, true);
-        fillValIfNullByName("createBy", "admin", metaObject, true);
-        fillValIfNullByName("updateBy", "admin", metaObject, true);
+        fillValIfNullByName("createBy", userInfo.getId(), metaObject, true);
+        fillValIfNullByName("updateBy", userInfo.getId(), metaObject, true);
 
         // 删除标记自动填充
         fillValIfNullByName("delFlag", CommonConstants.STATUS_NORMAL, metaObject, true);
@@ -31,7 +34,12 @@ public class MybatisPlusMetaObjectHandler implements MetaObjectHandler {
 
     @Override
     public void updateFill(MetaObject metaObject) {
+        log.debug("mybatis plus start update fill ....");
+        LocalDateTime now = LocalDateTime.now();
+        User userInfo = UserUtil.getUserInfo();
 
+        fillValIfNullByName("updateTime", now, metaObject, true);
+        fillValIfNullByName("updateBy", userInfo.getId(), metaObject, true);
     }
 
     /**
