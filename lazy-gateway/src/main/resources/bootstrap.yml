@@ -18,3 +18,6 @@ spring:
         group: LAZY_GROUP
         file-extension: yaml
         prefix: ${spring.application.name}
+logging:
+  level:
+    org.springframework: debug
