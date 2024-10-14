@@ -1,11 +1,14 @@
 package com.lazy.auth.login.service;
 
-import com.lazy.common.core.utils.R;
+import com.lazy.common.core.domain.R;
+import com.lazy.common.core.domain.vo.LoginVo;
 import com.lazy.system.api.login.dto.LoginDto;
 
-public interface ILoginService {
-    R doLogin(LoginDto loginDto);
+import java.util.Map;
 
-    R queryCode();
+public interface ILoginService {
+    R<LoginVo> doLogin(LoginDto loginDto);
+
+    R<Map<String, Object>> queryCode();
 
 }

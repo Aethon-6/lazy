@@ -1,5 +1,8 @@
-package com.lazy.common.core.utils;
+package com.lazy.common.core.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum RCodeEnum {
     SUCCESS(20000, "成功"),
     ERROR(20001, "失败");
@@ -11,11 +14,4 @@ public enum RCodeEnum {
         this.message = message;
     }
 
-    public Integer getCode() {
-        return code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
 }

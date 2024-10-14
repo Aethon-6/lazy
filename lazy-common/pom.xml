@@ -16,7 +16,7 @@
         <module>lazy-common-mybatis</module>
         <module>lazy-common-core</module>
         <module>lazy-common-feign</module>
-        <module>lazy-common-redis</module>
+        <module>lazy-common-satoken</module>
     </modules>
 
     <properties>

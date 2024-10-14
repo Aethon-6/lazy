@@ -1,6 +1,6 @@
 package com.lazy.system.auth.service.impl;
 
-import com.lazy.common.core.utils.R;
+import com.lazy.common.core.domain.R;
 import com.lazy.system.api.auth.entity.Account;
 import com.lazy.system.auth.mapper.AccountMapper;
 import com.lazy.system.auth.service.IAccountService;
@@ -19,11 +19,11 @@ import org.springframework.stereotype.Service;
 public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> implements IAccountService {
 
     @Override
-    public R queryAuth(String loginname) {
+    public R<Account> queryAuth(String loginname) {
         Account account = getOne(
                 lambdaQuery().getWrapper()
                         .eq(Account::getLoginname, loginname)
         );
-        return account != null ? R.success().data("account", account) : R.error();
+        return R.ok(account);
     }
 }

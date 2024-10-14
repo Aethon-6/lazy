@@ -23,6 +23,7 @@
         <lock4j.version>2.2.7</lock4j.version>
         <hutool.version>5.8.32</hutool.version>
         <dynamic-ds.version>4.3.1</dynamic-ds.version>
+        <sa-token.version>1.39.0</sa-token.version>
     </properties>
 
     <dependencyManagement>
@@ -47,6 +48,11 @@
                 <artifactId>lazy-smm-api</artifactId>
                 <version>${revision}</version>
             </dependency>
+            <dependency>
+                <groupId>com.lazy</groupId>
+                <artifactId>lazy-common-satoken</artifactId>
+                <version>${revision}</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.mysql</groupId>
@@ -54,18 +60,22 @@
                 <version>${mysql.version}</version>
             </dependency>
 
-            <!--redisson-->
             <dependency>
-                <groupId>org.redisson</groupId>
-                <artifactId>redisson-spring-boot-starter</artifactId>
-                <version>${redisson.version}</version>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-spring-boot3-starter</artifactId>
+                <version>${sa-token.version}</version>
             </dependency>
 
-            <!--redisson分布式锁-->
             <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>lock4j-redisson-spring-boot-starter</artifactId>
-                <version>${lock4j.version}</version>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-redis-jackson</artifactId>
+                <version>${sa-token.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-jwt</artifactId>
+                <version>${sa-token.version}</version>
             </dependency>
 
             <!-- 多数据源依赖 -->
