@@ -9,8 +9,8 @@ import com.lazy.common.core.domain.R;
 import com.lazy.common.core.domain.model.LoginUser;
 import com.lazy.common.core.domain.vo.LoginVo;
 import com.lazy.common.satoken.utils.LoginHelper;
-import com.lazy.system.api.auth.model.entity.Account;
 import com.lazy.system.api.auth.feign.RemoteAuthService;
+import com.lazy.system.api.auth.model.vo.AccountVo;
 import com.lazy.system.api.login.model.dto.LoginDto;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,7 @@ public class LoginServiceImpl implements ILoginService {
 
     @Override
     public R<LoginVo> doLogin(LoginDto loginDto) {
-        Account account = remoteAuthService.queryAuth(loginDto.getLoginname()).getData();
+        AccountVo account = remoteAuthService.queryAuth(loginDto.getLoginname()).getData();
         if (ObjectUtil.isNull(account)) {
             return R.fail("账号不存在！");
         }
@@ -36,7 +36,8 @@ public class LoginServiceImpl implements ILoginService {
         }
         LoginVo loginVo = LoginHelper.login(LoginUser.builder()
                 .userId(account.getId())
-                .username(account.getLoginname())
+                .userLogin(account.getLoginname())
+                .user(account.getUser())
                 .build());
 
 

@@ -10,7 +10,7 @@ public class LoginHelper {
 
     public static LoginVo login(LoginUser loginUser) {
         StpUtil.login(loginUser.getUserId());
-
+        StpUtil.getSession().set("user", loginUser.getUser());
         return LoginVo.builder()
                 .accessToken(StpUtil.getTokenValue())
                 .build();

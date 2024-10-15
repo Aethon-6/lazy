@@ -20,4 +20,4 @@ spring:
         prefix: ${spring.application.name}
 logging:
   level:
-    org.springframework: debug
+    com.com.baomidou.mybatisplus: debug

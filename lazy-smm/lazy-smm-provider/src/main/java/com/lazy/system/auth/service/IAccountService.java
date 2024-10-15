@@ -3,6 +3,7 @@ package com.lazy.system.auth.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.lazy.common.core.domain.R;
 import com.lazy.system.api.auth.model.entity.Account;
+import com.lazy.system.api.auth.model.vo.AccountVo;
 
 /**
  * <p>
@@ -14,5 +15,5 @@ import com.lazy.system.api.auth.model.entity.Account;
  */
 public interface IAccountService extends IService<Account> {
 
-    R<Account> queryAuth(String loginname);
+    R<AccountVo> queryAuth(String loginname);
 }

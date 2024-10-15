@@ -1,7 +1,7 @@
 package com.lazy.system.auth.controller;
 
 import com.lazy.common.core.domain.R;
-import com.lazy.system.api.auth.model.entity.Account;
+import com.lazy.system.api.auth.model.vo.AccountVo;
 import com.lazy.system.auth.service.IAccountService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +25,7 @@ public class AccountController {
     private IAccountService accountService;
 
     @GetMapping("query/{loginname}")
-    public R<Account> queryAuth(@PathVariable("loginname") String loginname) {
+    public R<AccountVo> queryAuth(@PathVariable("loginname") String loginname) {
         return accountService.queryAuth(loginname);
     }
 

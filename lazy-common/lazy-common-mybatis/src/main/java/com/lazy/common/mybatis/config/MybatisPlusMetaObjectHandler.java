@@ -6,6 +6,7 @@ import com.lazy.common.core.constant.CommonConstants;
 import com.lazy.common.satoken.utils.CacheHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
+import org.springframework.stereotype.Component;
 import org.springframework.util.ClassUtils;
 
 import java.nio.charset.Charset;
@@ -18,20 +19,20 @@ public class MybatisPlusMetaObjectHandler implements MetaObjectHandler {
         log.debug("mybatis plus start insert fill ....");
         LocalDateTime now = LocalDateTime.now();
 
-        fillValIfNullByName("create_time", now, metaObject, true);
-        fillValIfNullByName("update_time", now, metaObject, true);
-        fillValIfNullByName("create_by", CacheHelper.currentUserId(), metaObject, true);
-        fillValIfNullByName("update_by", CacheHelper.currentUserId(), metaObject, true);
+        fillValIfNullByName("createTime", now, metaObject, true);
+        fillValIfNullByName("updateTime", now, metaObject, true);
+        fillValIfNullByName("createBy", CacheHelper.currentUserId(), metaObject, true);
+        fillValIfNullByName("updateBy", CacheHelper.currentUserId(), metaObject, true);
 
         // 删除标记自动填充
-        fillValIfNullByName("del_flag", CommonConstants.STATUS_NORMAL, metaObject, true);
+        fillValIfNullByName("delFlag", CommonConstants.STATUS_NORMAL, metaObject, true);
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
         log.debug("mybatis plus start update fill ....");
-        fillValIfNullByName("update_time", LocalDateTime.now(), metaObject, true);
-        fillValIfNullByName("update_by", CacheHelper.currentUserId(), metaObject, true);
+        fillValIfNullByName("updateTime", LocalDateTime.now(), metaObject, true);
+        fillValIfNullByName("updateBy", CacheHelper.currentUserId(), metaObject, true);
     }
 
 
@@ -48,18 +49,13 @@ public class MybatisPlusMetaObjectHandler implements MetaObjectHandler {
         if (fieldVal == null) {
             return;
         }
-
-        // 1. 没有 set 方法
-        if (!metaObject.hasSetter(fieldName)) {
-            return;
-        }
-        // 2. 如果用户有手动设置的值
+        // 1. 如果用户有手动设置的值
         Object userSetValue = metaObject.getValue(fieldName);
         String setValueStr = StrUtil.str(userSetValue, Charset.defaultCharset());
         if (StrUtil.isNotBlank(setValueStr) && !isCover) {
             return;
         }
-        // 3. field 类型相同时设置
+        // 2. field 类型相同时设置
         Class<?> getterType = metaObject.getGetterType(fieldName);
         if (ClassUtils.isAssignableValue(getterType, fieldVal)) {
             metaObject.setValue(fieldName, fieldVal);
