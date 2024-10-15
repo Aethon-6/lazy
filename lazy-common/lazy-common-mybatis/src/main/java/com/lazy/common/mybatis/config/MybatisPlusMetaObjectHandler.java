@@ -3,6 +3,7 @@ package com.lazy.common.mybatis.config;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.lazy.common.core.constant.CommonConstants;
+import com.lazy.common.satoken.utils.CacheHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.util.ClassUtils;
@@ -19,8 +20,8 @@ public class MybatisPlusMetaObjectHandler implements MetaObjectHandler {
 
         fillValIfNullByName("createTime", now, metaObject, true);
         fillValIfNullByName("updateTime", now, metaObject, true);
-        fillValIfNullByName("createBy", "", metaObject, true);
-        fillValIfNullByName("updateBy", "", metaObject, true);
+        fillValIfNullByName("createBy", CacheHelper.currentUserId(), metaObject, true);
+        fillValIfNullByName("updateBy", CacheHelper.currentUserId(), metaObject, true);
 
         // 删除标记自动填充
         fillValIfNullByName("delFlag", CommonConstants.STATUS_NORMAL, metaObject, true);
@@ -30,7 +31,7 @@ public class MybatisPlusMetaObjectHandler implements MetaObjectHandler {
     public void updateFill(MetaObject metaObject) {
         log.debug("mybatis plus start update fill ....");
         fillValIfNullByName("updateTime", LocalDateTime.now(), metaObject, true);
-        fillValIfNullByName("updateBy", "", metaObject, true);
+        fillValIfNullByName("updateBy", CacheHelper.currentUserId(), metaObject, true);
     }
 
 

@@ -21,7 +21,7 @@
     <dependencies>
         <dependency>
             <groupId>com.lazy</groupId>
-            <artifactId>lazy-common-core</artifactId>
+            <artifactId>lazy-common-satoken</artifactId>
         </dependency>
         <!--hutool-->
         <dependency>
