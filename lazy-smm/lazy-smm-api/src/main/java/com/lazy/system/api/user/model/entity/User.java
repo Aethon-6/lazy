@@ -1,27 +1,33 @@
-package com.lazy.system.api.auth.entity;
+package com.lazy.system.api.user.model.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
+import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
  * <p>
- * 账号表
+ * 用户表
  * </p>
  *
  * @author ywx
- * @since 2024-09-25
+ * @since 2024-10-15
  */
+@Data
+@Builder
 @Getter
 @Setter
-@TableName("lazy_account")
-public class Account implements Serializable {
+@TableName("lazy_user")
+public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,22 +38,22 @@ public class Account implements Serializable {
     private Long id;
 
     /**
-     * 用户编号
+     * 用户名
      */
-    @TableField("user_id")
-    private Long userId;
+    @TableField("user_name")
+    private String userName;
 
     /**
-     * 账号
+     * 用户年龄
      */
-    @TableField("loginname")
-    private String loginname;
+    @TableField("user_age")
+    private Integer userAge;
 
     /**
-     * 密码
+     * 用户性别（M：男；F：女）
      */
-    @TableField("password")
-    private String password;
+    @TableField("user_gender")
+    private String userGender;
 
     /**
      * 创建时间

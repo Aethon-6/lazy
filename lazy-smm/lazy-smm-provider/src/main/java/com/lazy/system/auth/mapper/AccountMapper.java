@@ -1,7 +1,7 @@
 package com.lazy.system.auth.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.lazy.system.api.auth.entity.Account;
+import com.lazy.system.api.auth.model.entity.Account;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

@@ -16,7 +16,7 @@ import java.util.List;
 public class Generator {
     @Test
     public void generator() {
-        List<String> tableNames = Arrays.asList("lazy_account");
+        List<String> tableNames = Arrays.asList("lazy_user");
         // 数据库连接地址，
         String url = "jdbc:mysql://1.94.66.77:3306/lazy?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC";
         // 数据库用户名
@@ -35,7 +35,7 @@ public class Generator {
                 })
                 .packageConfig(builder -> {
                     builder.parent("com.lazy.system")
-                            .moduleName("auth")
+                            .moduleName("user")
                             .entity("entity")
                             .service("service")
                             .serviceImpl("service.impl")

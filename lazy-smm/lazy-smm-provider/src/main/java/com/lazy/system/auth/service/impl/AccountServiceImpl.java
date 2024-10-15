@@ -1,7 +1,7 @@
 package com.lazy.system.auth.service.impl;
 
 import com.lazy.common.core.domain.R;
-import com.lazy.system.api.auth.entity.Account;
+import com.lazy.system.api.auth.model.entity.Account;
 import com.lazy.system.auth.mapper.AccountMapper;
 import com.lazy.system.auth.service.IAccountService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

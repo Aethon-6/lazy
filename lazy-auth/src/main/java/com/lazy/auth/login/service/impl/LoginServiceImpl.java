@@ -1,9 +1,7 @@
 package com.lazy.auth.login.service.impl;
 
-import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.LineCaptcha;
-import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.lazy.auth.login.service.ILoginService;
@@ -11,9 +9,9 @@ import com.lazy.common.core.domain.R;
 import com.lazy.common.core.domain.model.LoginUser;
 import com.lazy.common.core.domain.vo.LoginVo;
 import com.lazy.common.satoken.utils.LoginHelper;
-import com.lazy.system.api.auth.entity.Account;
+import com.lazy.system.api.auth.model.entity.Account;
 import com.lazy.system.api.auth.feign.RemoteAuthService;
-import com.lazy.system.api.login.dto.LoginDto;
+import com.lazy.system.api.login.model.dto.LoginDto;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 

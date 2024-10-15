@@ -3,7 +3,7 @@ package com.lazy.auth.login.controller;
 import com.lazy.auth.login.service.ILoginService;
 import com.lazy.common.core.domain.R;
 import com.lazy.common.core.domain.vo.LoginVo;
-import com.lazy.system.api.login.dto.LoginDto;
+import com.lazy.system.api.login.model.dto.LoginDto;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 

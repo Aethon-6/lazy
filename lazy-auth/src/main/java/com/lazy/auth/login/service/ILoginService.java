@@ -2,7 +2,7 @@ package com.lazy.auth.login.service;
 
 import com.lazy.common.core.domain.R;
 import com.lazy.common.core.domain.vo.LoginVo;
-import com.lazy.system.api.login.dto.LoginDto;
+import com.lazy.system.api.login.model.dto.LoginDto;
 
 import java.util.Map;
 

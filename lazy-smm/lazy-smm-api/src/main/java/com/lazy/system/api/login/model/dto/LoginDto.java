@@ -1,4 +1,4 @@
-package com.lazy.system.api.login.dto;
+package com.lazy.system.api.login.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

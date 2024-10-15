@@ -18,20 +18,20 @@ public class MybatisPlusMetaObjectHandler implements MetaObjectHandler {
         log.debug("mybatis plus start insert fill ....");
         LocalDateTime now = LocalDateTime.now();
 
-        fillValIfNullByName("createTime", now, metaObject, true);
-        fillValIfNullByName("updateTime", now, metaObject, true);
-        fillValIfNullByName("createBy", CacheHelper.currentUserId(), metaObject, true);
-        fillValIfNullByName("updateBy", CacheHelper.currentUserId(), metaObject, true);
+        fillValIfNullByName("create_time", now, metaObject, true);
+        fillValIfNullByName("update_time", now, metaObject, true);
+        fillValIfNullByName("create_by", CacheHelper.currentUserId(), metaObject, true);
+        fillValIfNullByName("update_by", CacheHelper.currentUserId(), metaObject, true);
 
         // 删除标记自动填充
-        fillValIfNullByName("delFlag", CommonConstants.STATUS_NORMAL, metaObject, true);
+        fillValIfNullByName("del_flag", CommonConstants.STATUS_NORMAL, metaObject, true);
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
         log.debug("mybatis plus start update fill ....");
-        fillValIfNullByName("updateTime", LocalDateTime.now(), metaObject, true);
-        fillValIfNullByName("updateBy", CacheHelper.currentUserId(), metaObject, true);
+        fillValIfNullByName("update_time", LocalDateTime.now(), metaObject, true);
+        fillValIfNullByName("update_by", CacheHelper.currentUserId(), metaObject, true);
     }
 
 

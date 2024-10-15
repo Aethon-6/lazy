@@ -1,7 +1,7 @@
 package com.lazy.system.api.auth.feign;
 
 import com.lazy.common.core.domain.R;
-import com.lazy.system.api.auth.entity.Account;
+import com.lazy.system.api.auth.model.entity.Account;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -1,23 +1,18 @@
 package com.lazy.common.core.domain;
 
 import com.lazy.common.core.constant.HttpStatus;
-import com.lazy.common.core.enums.RCodeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serial;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class R<T> implements Serializable {
-    @Serial
     private static final long serialVersionUID = 1L;
     /**
      * 成功
