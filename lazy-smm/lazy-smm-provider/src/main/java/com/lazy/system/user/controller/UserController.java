@@ -1,13 +1,15 @@
 package com.lazy.system.user.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lazy.common.core.domain.R;
 import com.lazy.system.api.user.model.dto.UserDto;
+import com.lazy.system.api.user.model.dto.UserRequestDto;
+import com.lazy.system.api.user.model.entity.User;
 import com.lazy.system.user.service.IUserService;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -27,5 +29,10 @@ public class UserController {
     @PostMapping("add")
     public R<String> addUser(@RequestBody UserDto user) {
         return userService.addUser(user);
+    }
+
+    @GetMapping("list")
+    public R<Page<User>> queryUserList(UserRequestDto userRequestDto) {
+        return userService.queryUserList(userRequestDto);
     }
 }

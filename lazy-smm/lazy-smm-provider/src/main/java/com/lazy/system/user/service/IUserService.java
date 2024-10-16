@@ -1,9 +1,13 @@
 package com.lazy.system.user.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lazy.common.core.domain.R;
 import com.lazy.system.api.user.model.dto.UserDto;
+import com.lazy.system.api.user.model.dto.UserRequestDto;
 import com.lazy.system.api.user.model.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,4 +20,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface IUserService extends IService<User> {
 
     R<String> addUser(UserDto user);
+
+    R<Page<User>> queryUserList(UserRequestDto userRequestDto);
 }
