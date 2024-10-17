@@ -3,6 +3,7 @@ package com.lazy.gateway.config;
 import cn.dev33.satoken.reactor.filter.SaReactorFilter;
 import cn.dev33.satoken.router.SaRouter;
 import cn.dev33.satoken.stp.StpUtil;
+import cn.dev33.satoken.util.SaResult;
 import com.lazy.common.core.domain.R;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +22,7 @@ public class SaTokenConfigure {
                     SaRouter.match("/**", "/auth/login", r -> StpUtil.checkLogin());
                 })
                 .setError(e -> {
-                    return R.fail("认证失败");
+                    return SaResult.error(e.getMessage());
                 });
     }
 }
