@@ -51,4 +51,10 @@ public class LoginServiceImpl implements ILoginService {
         map.put("img", captcha.getImageBase64Data());
         return R.ok(map);
     }
+
+    @Override
+    public R<String> loginOut() {
+        LoginHelper.loginOut();
+        return R.ok("注销成功！");
+    }
 }

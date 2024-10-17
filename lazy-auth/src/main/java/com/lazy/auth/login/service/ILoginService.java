@@ -11,4 +11,5 @@ public interface ILoginService {
 
     R<Map<String, Object>> queryCode();
 
+    R<String> loginOut();
 }

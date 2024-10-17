@@ -25,4 +25,9 @@ public class LoginController {
     public R<Map<String, Object>> queryCode() {
         return loginService.queryCode();
     }
+
+    @PostMapping("logout")
+    public R<String> loginOut() {
+        return loginService.loginOut();
+    }
 }
