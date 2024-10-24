@@ -9,7 +9,7 @@ import com.lazy.common.core.domain.vo.UserVo;
  * @createDate : 2024/10/15
  */
 public class CacheHelper {
-    public static Long currentUserId() {
+    public static String currentUserId() {
         return currentUser().getId();
     }
 

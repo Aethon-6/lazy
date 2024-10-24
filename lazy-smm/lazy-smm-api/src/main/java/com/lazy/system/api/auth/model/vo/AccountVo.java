@@ -14,7 +14,7 @@ public class AccountVo {
     /**
      * 主键ID
      */
-    private Long id;
+    private String id;
 
     /**
      * 用户编号

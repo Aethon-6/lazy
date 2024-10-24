@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserVo {
-    private Long id;
+    private String id;
     private String userName;
     private Integer userAge;
     private String userGender;

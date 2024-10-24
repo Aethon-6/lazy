@@ -29,7 +29,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Override
     public R<String> addUser(UserDto user) {
         boolean b = save(User.builder()
-                .id(StrKit.numUuid())
+                .id(StrKit.uuid())
                 .userName(user.getUserName())
                 .userAge(user.getUserAge())
                 .userGender(user.getUserGender())

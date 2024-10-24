@@ -30,8 +30,8 @@ public class User implements Serializable {
     /**
      * 主键ID
      */
-    @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
+    @TableId(value = "id")
+    private String id;
 
     /**
      * 用户名
