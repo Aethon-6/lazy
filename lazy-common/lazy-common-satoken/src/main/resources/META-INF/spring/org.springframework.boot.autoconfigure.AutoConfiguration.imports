@@ -1,1 +1,2 @@
 com.lazy.common.satoken.SaTokenConfig
+com.lazy.common.satoken.RedisConfig

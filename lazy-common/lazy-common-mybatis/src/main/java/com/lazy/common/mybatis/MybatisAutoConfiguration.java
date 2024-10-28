@@ -3,8 +3,10 @@ package com.lazy.common.mybatis;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.lazy.common.mybatis.config.MybatisPlusMetaObjectHandler;
+import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
