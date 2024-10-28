@@ -74,6 +74,11 @@ public class User implements Serializable {
      */
     @TableField(value = "update_by", fill = FieldFill.INSERT_UPDATE)
     private Long updateBy;
+    /**
+     * 排序号
+     */
+    @TableField(value = "sort_num", fill = FieldFill.INSERT)
+    private Integer sortNum;
 
     /**
      * 是否删除（0：未删除；1：已删除）
