@@ -13,4 +13,5 @@ public class LoginDto {
     private String loginname;
     private String password;
     private String code;
+    private String validateCodeKey;
 }

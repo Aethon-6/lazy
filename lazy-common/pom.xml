@@ -17,6 +17,7 @@
         <module>lazy-common-core</module>
         <module>lazy-common-feign</module>
         <module>lazy-common-satoken</module>
+        <module>lazy-common-redis</module>
     </modules>
 
     <properties>

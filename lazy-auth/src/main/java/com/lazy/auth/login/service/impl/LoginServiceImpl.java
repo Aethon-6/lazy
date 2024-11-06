@@ -8,6 +8,8 @@ import com.lazy.auth.login.service.ILoginService;
 import com.lazy.common.core.domain.R;
 import com.lazy.common.core.domain.model.LoginUser;
 import com.lazy.common.core.domain.vo.LoginVo;
+import com.lazy.common.core.utils.StrKit;
+import com.lazy.common.redis.utils.RedisUtil;
 import com.lazy.common.satoken.utils.LoginHelper;
 import com.lazy.system.api.auth.feign.RemoteAuthService;
 import com.lazy.system.api.auth.model.vo.AccountVo;
@@ -17,12 +19,18 @@ import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class LoginServiceImpl implements ILoginService {
 
+    private static final String LOGIN_CODE_KEY = "login:code:";
+
     @Resource
     private RemoteAuthService remoteAuthService;
+
+    @Resource
+    private RedisUtil redisUtil;
 
     @Override
     public R<LoginVo> doLogin(LoginDto loginDto) {
@@ -48,6 +56,10 @@ public class LoginServiceImpl implements ILoginService {
     public R<Map<String, Object>> queryCode() {
         LineCaptcha captcha = CaptchaUtil.createLineCaptcha(100, 40, 6, 20);
         Map<String, Object> map = new LinkedHashMap<>();
+        String uuid = StrKit.numUuid() + "";
+        String validateCodeKey = LOGIN_CODE_KEY + uuid;
+        redisUtil.set(validateCodeKey, captcha.getCode(), 5, TimeUnit.MINUTES);
+        map.put("validateCodeKey", uuid);
         map.put("img", captcha.getImageBase64Data());
         return R.ok(map);
     }

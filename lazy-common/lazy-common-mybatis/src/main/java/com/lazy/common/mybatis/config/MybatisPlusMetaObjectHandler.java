@@ -5,6 +5,7 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.lazy.common.core.constant.CommonConstants;
+import com.lazy.common.redis.utils.RedisUtil;
 import com.lazy.common.satoken.utils.CacheHelper;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +24,9 @@ public class MybatisPlusMetaObjectHandler implements MetaObjectHandler {
     @Resource
     private RedisTemplate<String, String> redisTemplate;
 
+    @Resource
+    private RedisUtil redisUtil;
+
     @Override
     public void insertFill(MetaObject metaObject) {
         log.debug("mybatis plus start insert fill ....");
@@ -33,11 +37,11 @@ public class MybatisPlusMetaObjectHandler implements MetaObjectHandler {
         fillValIfNullByName("createBy", CacheHelper.currentUserId(), metaObject, true);
         fillValIfNullByName("updateBy", CacheHelper.currentUserId(), metaObject, true);
 
-        if (metaObject.getValue("sortNumber") == null) {
+        if (metaObject.getValue("sortNum") == null) {
             String tableName = getTableName(metaObject);
             if (tableName != null) {
                 Integer sortNumber = getNextSortNumber(tableName);
-                fillValIfNullByName("sortNumber", sortNumber, metaObject, true);
+                fillValIfNullByName("sortNum", sortNumber, metaObject, true);
             }
         }
 
@@ -64,14 +68,14 @@ public class MybatisPlusMetaObjectHandler implements MetaObjectHandler {
 
     private Integer getNextSortNumber(String tableName) {
         String key = "sort_number:" + tableName;
-        String sortNumber = redisTemplate.opsForValue().get(key);
+        String sortNumber = redisUtil.get(key);
         if (sortNumber == null) {
             // 初始化排序号为 "1"
-            redisTemplate.opsForValue().set(key, "1");
+            redisUtil.set(key, "1");
             return 1;
         } else {
             // 增加排序号，并返回增加后的值
-            String incrementedValue = Objects.requireNonNull(redisTemplate.opsForValue().increment(key, 1)).toString();
+            String incrementedValue = redisUtil.increment(key, 1);
             return Integer.parseInt(incrementedValue);
         }
     }
