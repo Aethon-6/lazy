@@ -34,6 +34,9 @@ public class LoginServiceImpl implements ILoginService {
 
     @Override
     public R<LoginVo> doLogin(LoginDto loginDto) {
+        if (redisUtil.get(LOGIN_CODE_KEY + loginDto.getValidateCodeKey()) == null) {
+            return R.fail("验证码已过期！");
+        }
         if (!StrKit.equals(redisUtil.get(LOGIN_CODE_KEY + loginDto.getValidateCodeKey()).toLowerCase(), loginDto.getCode().toLowerCase())) {
             return R.fail("验证码不正确！");
         }
