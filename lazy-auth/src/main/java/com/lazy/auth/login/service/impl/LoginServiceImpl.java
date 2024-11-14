@@ -34,7 +34,7 @@ public class LoginServiceImpl implements ILoginService {
 
     @Override
     public R<LoginVo> doLogin(LoginDto loginDto) {
-        AccountVo account = remoteAuthService.queryAuth(loginDto.getLoginname()).getData();
+        AccountVo account = remoteAuthService.queryAuth(loginDto.getLoginName()).getData();
         if (ObjectUtil.isNull(account)) {
             return R.fail("账号不存在！");
         }

@@ -30,10 +30,10 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
     private IUserService userService;
 
     @Override
-    public R<AccountVo> queryAuth(String loginname) {
+    public R<AccountVo> queryAuth(String loginName) {
         Account account = getOne(
                 lambdaQuery().getWrapper()
-                        .eq(Account::getLoginname, loginname)
+                        .eq(Account::getLoginname, loginName)
         );
 
         UserVo userVo = new UserVo();

@@ -24,9 +24,9 @@ public class AccountController {
     @Resource
     private IAccountService accountService;
 
-    @GetMapping("query/{loginname}")
-    public R<AccountVo> queryAuth(@PathVariable("loginname") String loginname) {
-        return accountService.queryAuth(loginname);
+    @GetMapping("query/{loginName}")
+    public R<AccountVo> queryAuth(@PathVariable("loginName") String loginName) {
+        return accountService.queryAuth(loginName);
     }
 
 }

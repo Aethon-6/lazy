@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(contextId = "remoteAuthService", value = "lazy-smm-provider")
 public interface RemoteAuthService {
-    @GetMapping("/sys/account/query/{loginname}")
-    R<AccountVo> queryAuth(@PathVariable("loginname") String loginname);
+    @GetMapping("/sys/account/query/{loginName}")
+    R<AccountVo> queryAuth(@PathVariable("loginName") String loginName);
 }

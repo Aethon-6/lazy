@@ -15,5 +15,5 @@ import com.lazy.system.api.auth.model.vo.AccountVo;
  */
 public interface IAccountService extends IService<Account> {
 
-    R<AccountVo> queryAuth(String loginname);
+    R<AccountVo> queryAuth(String loginName);
 }

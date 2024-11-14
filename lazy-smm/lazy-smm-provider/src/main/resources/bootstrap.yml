@@ -12,12 +12,16 @@ spring:
         watch:
           enabled: true
         watch-delay: 1000
+        username: nacos
+        password: nacos
       config:
         server-addr: 1.94.66.77:8848
         namespace: 1f24f69b-f4ba-41d7-8f09-252335691b3e
         group: LAZY_GROUP
         file-extension: yaml
         prefix: ${spring.application.name}
+        username: nacos
+        password: nacos
 logging:
   level:
     com.com.baomidou.mybatisplus: debug
