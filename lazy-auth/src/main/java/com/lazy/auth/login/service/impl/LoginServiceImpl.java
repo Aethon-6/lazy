@@ -34,6 +34,10 @@ public class LoginServiceImpl implements ILoginService {
 
     @Override
     public R<LoginVo> doLogin(LoginDto loginDto) {
+        if (!StrKit.equals(redisUtil.get(LOGIN_CODE_KEY + loginDto.getValidateCodeKey()).toLowerCase(), loginDto.getCode().toLowerCase())) {
+            return R.fail("验证码不正确！");
+        }
+        redisUtil.delete(LOGIN_CODE_KEY + loginDto.getValidateCodeKey());
         AccountVo account = remoteAuthService.queryAuth(loginDto.getLoginName()).getData();
         if (ObjectUtil.isNull(account)) {
             return R.fail("账号不存在！");
