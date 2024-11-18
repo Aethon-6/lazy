@@ -5,16 +5,20 @@ import com.lazy.common.core.domain.R;
 import com.lazy.common.core.domain.vo.LoginVo;
 import com.lazy.system.api.login.model.dto.LoginDto;
 import jakarta.annotation.Resource;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 @RestController
 @RequestMapping("auth")
+@RequiredArgsConstructor
 public class LoginController {
 
-    @Resource
-    private ILoginService loginService;
+    private final @NonNull ILoginService loginService;
+    /*@Resource
+    private ILoginService loginService;*/
 
     @PostMapping("login")
     public R<LoginVo> doLogin(@RequestBody LoginDto loginDto) {

@@ -61,7 +61,7 @@ public class LoginServiceImpl implements ILoginService {
 
     @Override
     public R<Map<String, Object>> queryCode() {
-        LineCaptcha captcha = CaptchaUtil.createLineCaptcha(100, 40, 6, 20);
+        LineCaptcha captcha = CaptchaUtil.createLineCaptcha(100, 40, 4, 20);
         Map<String, Object> map = new LinkedHashMap<>();
         String uuid = StrKit.numUuid() + "";
         String validateCodeKey = LOGIN_CODE_KEY + uuid;
