@@ -5,6 +5,7 @@ import com.lazy.common.core.domain.R;
 import com.lazy.system.api.user.model.dto.UserDto;
 import com.lazy.system.api.user.model.dto.UserRequestDto;
 import com.lazy.system.api.user.model.entity.User;
+import com.lazy.system.api.user.model.vo.UserInfoVo;
 import com.lazy.system.user.service.IUserService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
@@ -34,5 +35,10 @@ public class UserController {
     @GetMapping("list")
     public R<Page<User>> queryUserList(UserRequestDto userRequestDto) {
         return userService.queryUserList(userRequestDto);
+    }
+
+    @GetMapping("query")
+    public R<UserInfoVo> queryCurrentUser() {
+        return userService.queryCurrentUser();
     }
 }

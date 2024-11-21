@@ -6,6 +6,7 @@ import com.lazy.system.api.user.model.dto.UserDto;
 import com.lazy.system.api.user.model.dto.UserRequestDto;
 import com.lazy.system.api.user.model.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.lazy.system.api.user.model.vo.UserInfoVo;
 
 import java.util.List;
 
@@ -22,4 +23,6 @@ public interface IUserService extends IService<User> {
     R<String> addUser(UserDto user);
 
     R<Page<User>> queryUserList(UserRequestDto userRequestDto);
+
+    R<UserInfoVo> queryCurrentUser();
 }
