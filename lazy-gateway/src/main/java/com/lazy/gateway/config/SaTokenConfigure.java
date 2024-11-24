@@ -7,6 +7,7 @@ import cn.dev33.satoken.router.SaHttpMethod;
 import cn.dev33.satoken.router.SaRouter;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
+import com.lazy.common.core.constant.HttpStatus;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.server.ServerWebExchange;
@@ -36,7 +37,7 @@ public class SaTokenConfigure {
                     // 设置错误返回格式为JSON
                     ServerWebExchange exchange = SaReactorSyncHolder.getContext();
                     exchange.getResponse().getHeaders().set("Content-Type", "application/json; charset=utf-8");
-                    return SaResult.error(e.getMessage());
+                    return SaResult.error(e.getMessage()).setCode(HttpStatus.UNAUTHORIZED);
                 })
                 .setBeforeAuth(obj -> {
                     // ---------- 设置跨域响应头 ----------
