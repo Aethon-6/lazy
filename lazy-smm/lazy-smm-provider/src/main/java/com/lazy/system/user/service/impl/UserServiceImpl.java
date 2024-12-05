@@ -1,6 +1,5 @@
 package com.lazy.system.user.service.impl;
 
-import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lazy.common.core.domain.R;
@@ -15,8 +14,6 @@ import com.lazy.system.user.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 /**
  * <p>
  * 用户表 服务实现类
@@ -30,13 +27,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Override
     public R<String> addUser(UserDto user) {
-        boolean b = save(User.builder()
+        boolean flag = save(User.builder()
                 .id(StrKit.uuid())
                 .userName(user.getUserName())
                 .userAge(user.getUserAge())
                 .userGender(user.getUserGender())
                 .build());
-        return b ? R.ok("新增成功！") : R.fail();
+        return flag ? R.ok("新增成功！") : R.fail();
     }
 
     @Override

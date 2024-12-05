@@ -4,6 +4,9 @@ import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lazy.common.core.domain.R;
+import com.lazy.common.core.utils.CryptoKit;
+import com.lazy.common.core.utils.StrKit;
+import com.lazy.system.api.auth.model.dto.AuthDto;
 import com.lazy.system.api.auth.model.entity.Account;
 import com.lazy.system.api.auth.model.vo.AccountVo;
 import com.lazy.common.core.domain.vo.UserVo;
@@ -59,5 +62,17 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
                     .build();
         }
         return R.ok(accountVo);
+    }
+
+    @Override
+    public R<String> addUser(AuthDto authDto) {
+        boolean flag = save(Account.builder()
+                .id(StrKit.uuid())
+                .userId(authDto.getUserId())
+                .loginname(authDto.getLoginName())
+                .password(CryptoKit.Md5.encrypt(authDto.getPassword()))
+                .build());
+
+        return flag ? R.ok("新增成功！") : R.fail();
     }
 }

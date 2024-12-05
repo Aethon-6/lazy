@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +18,8 @@ import lombok.Setter;
  * @author ywx
  * @since 2024-09-25
  */
+@Data
+@Builder
 @Getter
 @Setter
 @TableName("lazy_account")
@@ -33,7 +37,7 @@ public class Account implements Serializable {
      * 用户编号
      */
     @TableField("user_id")
-    private Long userId;
+    private String userId;
 
     /**
      * 账号
@@ -57,7 +61,7 @@ public class Account implements Serializable {
      * 创建人
      */
     @TableField(value = "create_by", fill = FieldFill.INSERT)
-    private Long createBy;
+    private String createBy;
 
     /**
      * 修改时间
@@ -69,7 +73,7 @@ public class Account implements Serializable {
      * 修改人
      */
     @TableField(value = "update_by", fill = FieldFill.INSERT_UPDATE)
-    private Long updateBy;
+    private String updateBy;
     /**
      * 排序号
      */
