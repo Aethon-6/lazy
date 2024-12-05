@@ -8,6 +8,8 @@ import com.lazy.system.api.user.model.entity.User;
 import com.lazy.system.api.user.model.vo.UserInfoVo;
 import com.lazy.system.user.service.IUserService;
 import jakarta.annotation.Resource;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,10 +24,10 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/sys/user")
+@RequiredArgsConstructor
 public class UserController {
 
-    @Resource
-    private IUserService userService;
+    private final @NonNull IUserService userService;
 
     @PostMapping("add")
     public R<String> addUser(@RequestBody UserDto user) {
