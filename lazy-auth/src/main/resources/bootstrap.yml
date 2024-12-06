@@ -23,9 +23,9 @@ spring:
         username: nacos
         password: nacos
         shared-configs:
-          - data-id: redis-config.yaml
+          - data-id: redis-config-dev.yaml
             group: LAZY_GROUP
             refresh: true
-          - data-id: sa-token-config.yaml
+          - data-id: sa-token-config-dev.yaml
             group: LAZY_GROUP
             refresh: true
