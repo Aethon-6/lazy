@@ -12,6 +12,7 @@ import com.lazy.system.api.auth.model.vo.AccountVo;
 import com.lazy.common.core.domain.vo.UserVo;
 import com.lazy.system.auth.mapper.AccountMapper;
 import com.lazy.system.auth.service.IAccountService;
+import com.lazy.system.config.CipherConfig;
 import com.lazy.system.user.service.IUserService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,9 @@ import com.lazy.system.api.user.model.entity.User;
  */
 @Service
 public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> implements IAccountService {
+
+    @Resource
+    private CipherConfig cipherConfig;
 
     @Resource
     private IUserService userService;
@@ -70,7 +74,7 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
                 .id(StrKit.uuid())
                 .userId(authDto.getUserId())
                 .loginname(authDto.getLoginName())
-                .password(CryptoKit.Md5.encrypt(authDto.getPassword()))
+                .password(CryptoKit.Md5.encrypt(cipherConfig.getDefaultPWD()))
                 .build());
 
         return flag ? R.ok("新增成功！") : R.fail();

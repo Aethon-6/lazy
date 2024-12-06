@@ -4,6 +4,7 @@ import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.LineCaptcha;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
+import com.lazy.auth.login.config.CaptchaConfig;
 import com.lazy.auth.login.service.ILoginService;
 import com.lazy.common.core.domain.R;
 import com.lazy.common.core.domain.model.LoginUser;
@@ -25,6 +26,9 @@ import java.util.concurrent.TimeUnit;
 public class LoginServiceImpl implements ILoginService {
 
     private static final String LOGIN_CODE_KEY = "login:code:";
+
+    @Resource
+    private CaptchaConfig captchaConfig;
 
     @Resource
     private RemoteAuthService remoteAuthService;
@@ -61,7 +65,7 @@ public class LoginServiceImpl implements ILoginService {
 
     @Override
     public R<Map<String, Object>> queryCode() {
-        LineCaptcha captcha = CaptchaUtil.createLineCaptcha(100, 40, 4, 20);
+        LineCaptcha captcha = CaptchaUtil.createLineCaptcha(100, 40, captchaConfig.getLength(), 20);
         Map<String, Object> map = new LinkedHashMap<>();
         String uuid = StrKit.numUuid() + "";
         String validateCodeKey = LOGIN_CODE_KEY + uuid;
